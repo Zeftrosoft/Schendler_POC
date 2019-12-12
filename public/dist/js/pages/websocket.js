@@ -3,9 +3,11 @@ var socket=io(websocket_host)
 
 var serverOnlineId = "#serverOnline"
 var liftOnlineId = "#liftOnline"
-
+var lift_online = false
+var server_online = false
 socket.on('connect', function(){ 
   console.log('Connected to Socket Server') 
+  server_online = true
   if($(serverOnlineId).hasClass('btn-danger')){
     $(serverOnlineId).removeClass('btn-danger')
     $(serverOnlineId).addClass('btn-success')
@@ -16,6 +18,7 @@ socket.on('connect', function(){
     switch (msg.topic) {
       case topic_subscribe.initialStatus:
         if(msg.payload == msg_rec._yesAlive) {
+          lift_online = true
           if($(liftOnlineId).hasClass('btn-danger')){
             $(liftOnlineId).removeClass('btn-danger')
             $(liftOnlineId).addClass('btn-success')
@@ -155,18 +158,23 @@ socket.on('connect', function(){
 
 // 
 function start_test() {
-  socket.emit('publish', {topic:topic_publish.test,payload:msg_pub._testStart});
-  $('#testStatus').text('')
-  $('#doorStatus').text('')
-  $('#liftStatus').text('')
-  $('#sensor1Status').text('')
-  $('#sensor2Status').text('')
-  $('#set1Status').text('Not Started Yet')
-  $('#set2Status').text('Not Started Yet')
-  $('#dataSaved').html('')
+  if(!server_online) {
+    notifyUser('error','Cannot Start Test You Are Not Connected To Server')
+  } else if(!lift_online) {
+    notifyUser('error','Cannot Start Test Lift Is Offline')
+  } else {
+    socket.emit('publish', {topic:topic_publish.test,payload:msg_pub._testStart});
+    $('#testStatus').text('')
+    $('#doorStatus').text('')
+    $('#liftStatus').text('')
+    $('#sensor1Status').text('')
+    $('#sensor2Status').text('')
+    $('#set1Status').text('Not Started Yet')
+    $('#set2Status').text('Not Started Yet')
+    $('#dataSaved').html('')
+  }
 }
 
 socket.on('disconnect', function(){ 
   console.log('Disconnect from server') 
-  
 }); 
