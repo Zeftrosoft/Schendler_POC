@@ -1,7 +1,8 @@
 var local = 'http://localhost:3000'
-var online = 'https://laptopsoft.herokuapp.com'
+var online = '52.8.236.185:23456'
 var mqtt_host = "52.8.236.185"
 var mqtt_port = 9001
+var websocket_port = 3000
 var used_host = online
 
 var topic_publish = {
