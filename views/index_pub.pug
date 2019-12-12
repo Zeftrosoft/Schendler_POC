@@ -1,0 +1,120 @@
+extends layout
+
+block content
+  // Main content
+  section.content
+    .container-fluid
+      .row
+        .col-12
+          // Default box
+          .card
+            .card-header
+              .row
+                .col-3
+                  button.btn.btn-success(type='button', onclick='start_test()') Start Test
+                  button.btn.btn-danger(type='button', onclick='stop_test()') Stop Test
+                .col-2
+                  h5
+                    span.label.label-primary(style='color:rgb(41, 167, 69)') Test Status:
+                .col-2
+                  h6
+                    span#sos1.label.label-primary(style='color:rgb(41, 167, 69)')
+                .col-3
+                  h5
+                    span.label.label-primary Initialising Sensors.....
+              .card-tools
+                button.btn.btn-tool(type='button', data-card-widget='collapse', data-toggle='tooltip', title='Collapse')
+                  i.fas.fa-minus
+            // /.card-body
+            .card-body
+              .row
+                .col-6
+                  h3
+                    span.label.label-primary(style='color:rgb(41, 167, 69)') Status of Sensor:
+                    br
+                    br
+                  .callout.callout-info
+                    h5
+                      span.label.label-primary(style='color:rgb(163, 7, 7)') Sensor1:Sound Recorder 
+                      br
+                      br
+                  .callout.callout-info
+                    h5
+                      span.label.label-primary(style='color:rgb(167, 7, 7)') Sensor2:Vibration Recorder
+                      br
+                      br
+                .col-6
+                  h3
+                    span.label.label-primary(style='color:rgb(41, 167, 69)') Lift Status:
+                    br
+                    br
+                  .callout.callout-info
+                    // Lift status
+                    // /.card-body
+                    .card-footer
+                      //- | Footer
+                    // /.card-footer
+                br
+                .card-header
+                  h3.card-title Simple Full Width Table
+                  .card-tools
+                    ul.pagination.pagination-sm.float-right
+                      li.page-item
+                        a.page-link(href='#') «
+                      li.page-item
+                        a.page-link(href='#') 1
+                      li.page-item
+                        a.page-link(href='#') 2
+                      li.page-item
+                        a.page-link(href='#') 3
+                      li.page-item
+                        a.page-link(href='#') »
+                  // /.card-header
+                  .card-body.p-0
+                    table.table
+                      thead
+                        tr
+                          th(style='width: 10px') #
+                          th(style='width: 500px') Task
+                          th(style='width: 500px') Progress
+                          th(style='width: 90px') Label
+                      tbody
+                        tr
+                          td 1.
+                          td Update software
+                          td
+                            .progress.progress-xs
+                              .progress-bar.progress-bar-danger(style='width: 55%')
+                          td
+                            span.badge.bg-danger 55%
+                        tr
+                          td 2.
+                          td Clean database
+                          td
+                            .progress.progress-xs
+                              .progress-bar.bg-warning(style='width: 70%')
+                          td
+                            span.badge.bg-warning 70%
+                        tr
+                          td 3.
+                          td Cron job running
+                          td
+                            .progress.progress-xs.progress-striped.active
+                              .progress-bar.bg-primary(style='width: 30%')
+                          td
+                            span.badge.bg-primary 30%
+                        tr
+                          td 4.
+                          td Fix and squish bugs
+                          td
+                            .progress.progress-xs.progress-striped.active
+                              .progress-bar.bg-success(style='width: 90%')
+                          td
+                            span.badge.bg-success 90%
+                    // /.card-body
+                    .row
+                      .col-6
+            // /.card
+block append scripts
+  script(src='dist/js/pages/mqtt_publish.js')
+  

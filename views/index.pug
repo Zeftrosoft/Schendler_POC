@@ -1,0 +1,76 @@
+extends layout
+
+block content
+  // Main content
+  section.content
+    .container-fluid
+      .row
+        .col-12
+          // Default box
+          .card
+            .card-header
+              .row
+                .col-2
+                  button.btn.btn-success(type='button', onclick='start_test()') Start Test
+                  button.btn.btn-danger(type='button', onclick='stop_test()') Stop Test
+                .col-5
+                .col-5
+
+              .card-tools
+                button.btn.btn-tool(type='button', data-card-widget='collapse', data-toggle='tooltip', title='Collapse')
+                  i.fas.fa-minus
+            // /.card-body
+            .card-body
+              .row
+                .col-4
+                  h3
+                    span(style='color:rgb(19, 51, 110)') Over All Test:
+                  .callout.callout-info
+                    h3
+                      span#testStatus(style='color:rgb(41, 167, 69)') Test Status Will Apear Here
+                .col-4
+                  h3
+                    span(style='color:rgb(19, 51, 110)') Set 1:
+                  .callout.callout-info
+                    h3
+                      span#set1Status(style='color:rgb(41, 167, 69)') SetNo 1 Status Will Apear Here
+                .col-4
+                  h3
+                    span(style='color:rgb(19, 51, 110)') Set 2:
+                  .callout.callout-info
+                    h3
+                      span#set2Status(style='color:rgb(41, 167, 69)') SetNo 2 Status Will Apear Here
+              br
+              br
+              .row
+                .col-6
+                  h3
+                    span(style='color:rgb(19, 51, 110)') Status of Sensor:
+                    br
+                    br
+                  .callout.callout-info
+                    h3 Sensor1: 
+                      span#sensor1Status(style='color:rgb(41, 167, 69)') Status Will Appear Here
+                  .callout.callout-info
+                    h3 Sensor2: 
+                      span#sensor2Status(style='color:rgb(41, 167, 69)') Status Will Appear Here
+                .col-6
+                  h3
+                    span(style='color:rgb(19, 51, 110)') Lift Status:
+                    br
+                    br
+                  .callout.callout-info
+                    h4
+                      span#doorStatus(style='color:rgb(41, 167, 69)') Door Status Will Apear Here
+                    h4
+                      span#liftStatus(style='color:rgb(41, 167, 69)') Lift Status Will Apear Here
+                    // /.card-footer
+              .row
+                .col-md-12#dataSaved
+                  
+                .col-md-12#dataPanel
+                  
+            // /.card
+block append scripts
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.dev.js')
+  script(src='dist/js/pages/websocket.js')
