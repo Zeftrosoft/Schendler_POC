@@ -1,4 +1,4 @@
-var socket=io(used_host+':'+websocket_port) 
+var socket=io(websocket_host) 
 // make connection with server from user side
 
 var serverOnlineId = "#serverOnline"

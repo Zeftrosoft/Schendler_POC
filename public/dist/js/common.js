@@ -3,7 +3,7 @@ var online = '52.8.236.185:23456'
 var mqtt_host = "52.8.236.185"
 var mqtt_port = 9001
 var websocket_port = 3000
-var used_host = online
+var websocket_host = '52.8.236.185:'+websocket_port
 
 var topic_publish = {
   test : '/test',
