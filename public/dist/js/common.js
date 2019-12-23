@@ -4,6 +4,9 @@ var mqtt_host = "52.8.236.185"
 var mqtt_port = 9001
 var websocket_port = 3000
 var websocket_host = '52.8.236.185:'+websocket_port
+var live_websocket_port = 3000
+var live_websocket_host = 'localhost:'+live_websocket_port
+var live_websocket_host_1234 = 'http://localhost:'+live_websocket_port+'/1234'
 
 var topic_publish = {
   test : '/test',
